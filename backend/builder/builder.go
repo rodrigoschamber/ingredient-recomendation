@@ -1,8 +1,10 @@
 package builder
 
 type Builder interface {
-    SetPartA()
-    SetPartB()
-    SetPartC()
-    GetResult() Product
+    SetName()
+    SetMechanism()
+    SetDescription()
+    SetAvailability()
+    BuildIngredientByDisease() ActiveIngredient
+    BuildIngredientByName() ActiveIngredient
 }

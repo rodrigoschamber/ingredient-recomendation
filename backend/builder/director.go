@@ -11,7 +11,8 @@ func NewDirector(b Builder) *Director {
 }
 
 func (d *Director) Construct() {
-    d.builder.SetPartA()
-    d.builder.SetPartB()
-    d.builder.SetPartC()
+    d.builder.SetName()
+    d.builder.SetMechanism()
+    d.builder.SetDescription()
+    d.builder.SetAvailability()
 }
