@@ -1,10 +1,15 @@
+import { getPrompt } from "../prompts/prompts.js";
+import PromptFacade from "../facade/promptFacade.js";
+
 class ActiveIngredientDirector {
   constructor(builder) {
     this.builder = builder;
   }
 
-  constructByDisease(disease) {
-    console.log(disease);
+  async constructByDisease(disease) {
+    const api = new PromptFacade(getPrompt(disease));
+    const response = await api.generateContent();
+    console.log(JSON.stringify(response));
     return this.builder
       .setName("Aspirin")
       .setMechanism("Inhibits cyclooxygenase")
