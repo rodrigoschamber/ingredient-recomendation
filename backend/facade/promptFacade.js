@@ -8,9 +8,21 @@ const model = "gemini-1.5-pro-002";
 const generativeModel = vertex_ai.preview.getGenerativeModel({
   model: model,
   generationConfig: {
-    maxOutputTokens: 512,
+    maxOutputTokens: 1024,
     temperature: 0,
     topP: 0.95,
+    responseMimeType: "application/json",
+    responseSchema: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          descricao: { type: "string" },
+          mecanismo: { type: "string" },
+          principio_ativo: { type: "string" },
+        },
+      },
+    },
   },
   safetySettings: [
     {
