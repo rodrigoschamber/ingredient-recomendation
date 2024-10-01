@@ -1,4 +1,4 @@
-import { VertexAI} from "@google-cloud/vertexai"
+import { VertexAI } from "@google-cloud/vertexai";
 const vertex_ai = new VertexAI({
   project: "ai-spike-433221",
   location: "us-central1",
@@ -8,7 +8,7 @@ const model = "gemini-1.5-pro-002";
 const generativeModel = vertex_ai.preview.getGenerativeModel({
   model: model,
   generationConfig: {
-    maxOutputTokens: 4096,
+    maxOutputTokens: 512,
     temperature: 0,
     topP: 0.95,
   },
@@ -44,13 +44,7 @@ class PromptFacade {
 
     const streamingResp = await generativeModel.generateContentStream(req);
 
-    for await (const item of streamingResp.stream) {
-      process.stdout.write("stream chunk: " + JSON.stringify(item) + "\n");
-    }
-
-    process.stdout.write(
-      "aggregated response: " + JSON.stringify(await streamingResp.response)
-    );
+    process.stdout.write(JSON.stringify(await streamingResp.response));
   }
 }
 
