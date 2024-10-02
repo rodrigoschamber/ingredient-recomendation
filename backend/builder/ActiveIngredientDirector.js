@@ -19,7 +19,7 @@ class ActiveIngredientDirector {
   }
 
   async constructByName(name) {
-    const api = new PromptFacade(getDiseasePrompt(name));
+    const api = new PromptFacade(getNamePrompt(name));
     const response = await api.generateContent();
     console.log(response);
     return this.builder
