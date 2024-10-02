@@ -9,25 +9,29 @@ class ActiveIngredientDirector {
   async constructByDisease(disease) {
     const api = new PromptFacade(getDiseasePrompt(disease));
     const response = await api.generateContent();
-    console.log(response);
-    return this.builder
-      .setName(response[0].principio_ativo)
-      .setMechanism(response[0].mecanismo)
-      .setDescription(response[0].descricao)
-      .setAvailability(true)
-      .build();
+
+    return response?.map((item) => {
+      return this.builder
+        .setName(item?.principio_ativo)
+        .setMechanism(item?.mecanismo)
+        .setDescription(item?.descricao)
+        .setAvailability(true)
+        .build();
+    });
   }
 
   async constructByName(name) {
     const api = new PromptFacade(getNamePrompt(name));
     const response = await api.generateContent();
-    console.log(response);
-    return this.builder
-      .setName(response[0].principio_ativo)
-      .setMechanism(response[0].mecanismo)
-      .setDescription(response[0].descricao)
-      .setAvailability(true)
-      .build();
+
+    return response?.map((item) => {
+      return this.builder
+        .setName(item?.principio_ativo)
+        .setMechanism(item?.mecanismo)
+        .setDescription(item?.descricao)
+        .setAvailability(true)
+        .build();
+    });
   }
 }
 
