@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Ácido Tranexâmico",
+        "availability": true
+    },
+    {
+        "name": "Hidroquinona",
+        "availability": true
+    },
+    {
+        "name": "Ácido glicólico",
+        "availability": true
+    },
+    {
+        "name": "Niacinamida",
+        "availability": true
+    },
+    {
+        "name": "Vitamina C",
+        "availability": true
+    },
+    {
+        "name": "Arbutin",
+        "availability": true
+    },
+    {
+        "name": "Ácido retinóico",
+        "availability": true
+    },
+    {
+        "name": "Ácido kójico",
+        "availability": true
+    },
+    {
+        "name": "Resveratrol",
+        "availability": true
+    },
+    {
+        "name": "Licorice",
+        "availability": true
+    }
+]
