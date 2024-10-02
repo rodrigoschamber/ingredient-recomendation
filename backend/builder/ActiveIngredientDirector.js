@@ -1,4 +1,4 @@
-import { getPrompt } from "../prompts/prompts.js";
+import { getDiseasePrompt, getNamePrompt } from "../prompts/prompts.js";
 import PromptFacade from "../facade/promptFacade.js";
 
 class ActiveIngredientDirector {
@@ -7,7 +7,7 @@ class ActiveIngredientDirector {
   }
 
   async constructByDisease(disease) {
-    const api = new PromptFacade(getPrompt(disease));
+    const api = new PromptFacade(getDiseasePrompt(disease));
     const response = await api.generateContent();
     console.log(response);
     return this.builder
@@ -18,8 +18,10 @@ class ActiveIngredientDirector {
       .build();
   }
 
-  constructByName(name) {
-    console.log(name);
+  async constructByName(name) {
+    const api = new PromptFacade(getDiseasePrompt(name));
+    const response = await api.generateContent();
+    console.log(response);
     return this.builder
       .setName("Ibuprofen")
       .setMechanism("Nonsteroidal anti-inflammatory drug (NSAID)")
