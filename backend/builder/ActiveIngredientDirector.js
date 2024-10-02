@@ -1,5 +1,6 @@
 import { getDiseasePrompt, getNamePrompt } from "../prompts/prompts.js";
 import PromptFacade from "../facade/promptFacade.js";
+import StockFacade from "../facade/stockFacade.js";
 
 class ActiveIngredientDirector {
   constructor(builder) {
@@ -11,11 +12,12 @@ class ActiveIngredientDirector {
     const response = await api.generateContent();
 
     return response?.map((item) => {
+      let stock = new StockFacade(item?.principio_ativo)
       return this.builder
         .setName(item?.principio_ativo)
         .setMechanism(item?.mecanismo)
         .setDescription(item?.descricao)
-        .setAvailability(true)
+        .setAvailability(stock.getAvailability())
         .build();
     });
   }
@@ -25,11 +27,12 @@ class ActiveIngredientDirector {
     const response = await api.generateContent();
 
     return response?.map((item) => {
+      let stock = new StockFacade(item?.principio_ativo)
       return this.builder
         .setName(item?.principio_ativo)
         .setMechanism(item?.mecanismo)
         .setDescription(item?.descricao)
-        .setAvailability(true)
+        .setAvailability(stock.getAvailability())
         .build();
     });
   }

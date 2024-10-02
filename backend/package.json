@@ -21,7 +21,6 @@
     "@google-cloud/vertexai": "^1.8.1",
     "express": "^4.21.0",
     "fs": "^0.0.1-security",
-    "path": "^0.12.7",
-    "timeout": "^0.2.1"
+    "path": "^0.12.7"
   }
 }
