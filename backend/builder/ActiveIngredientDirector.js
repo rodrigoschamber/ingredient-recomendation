@@ -8,15 +8,14 @@ class ActiveIngredientDirector {
 
   async constructByDisease(disease) {
     const api = new PromptFacade(getDiseasePrompt(disease));
-    await api.generateContent().then((response) => {
-      console.log(response);
-      return this.builder
-        .setName("Aspirin")
-        .setMechanism("Inhibits cyclooxygenase")
-        .setDescription("Used to reduce pain, fever, or inflammation.")
-        .setAvailability(true)
-        .build();
-    });
+    const response = await api.generateContent();
+    console.log(response);
+    return this.builder
+      .setName(response[0].principio_ativo)
+      .setMechanism(response[0].mecanismo)
+      .setDescription(response[0].descricao)
+      .setAvailability(true)
+      .build();
   }
 
   async constructByName(name) {
@@ -24,9 +23,9 @@ class ActiveIngredientDirector {
     const response = await api.generateContent();
     console.log(response);
     return this.builder
-      .setName("Ibuprofen")
-      .setMechanism("Nonsteroidal anti-inflammatory drug (NSAID)")
-      .setDescription("Used to reduce fever and treat pain or inflammation.")
+      .setName(response[0].principio_ativo)
+      .setMechanism(response[0].mecanismo)
+      .setDescription(response[0].descricao)
       .setAvailability(true)
       .build();
   }
