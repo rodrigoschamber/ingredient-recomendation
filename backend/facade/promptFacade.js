@@ -55,8 +55,14 @@ class PromptFacade {
     };
 
     const streamingResp = await generativeModel.generateContentStream(req);
+    let data = "";
+    for await (const item of streamingResp.stream) {
+      if (item !== undefined) {
+        data += item?.candidates[0]?.content.parts[0]?.text;
+      }
+    }
 
-    process.stdout.write(JSON.stringify(await streamingResp.response));
+    return JSON.parse(data);
   }
 }
 

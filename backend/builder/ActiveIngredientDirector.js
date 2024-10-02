@@ -9,7 +9,7 @@ class ActiveIngredientDirector {
   async constructByDisease(disease) {
     const api = new PromptFacade(getPrompt(disease));
     const response = await api.generateContent();
-    console.log(JSON.stringify(response));
+    console.log(response);
     return this.builder
       .setName("Aspirin")
       .setMechanism("Inhibits cyclooxygenase")
