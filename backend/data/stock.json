@@ -1,46 +1,38 @@
 [
-    {
-        "name": "Ácido Tranexâmico",
-        "availability": true
-    },
-    {
-        "name": "Hidroquinona",
-        "availability": true
-    },
-    {
-        "name": "Ácido glicólico",
-        "availability": true
-    },
-    {
-        "name": "Niacinamida",
-        "availability": true
-    },
-    {
-        "name": "Vitamina C",
-        "availability": true
-    },
-    {
-        "name": "Arbutin",
-        "availability": true
-    },
-    {
-        "name": "Ácido retinóico",
-        "availability": true
-    },
-    {
-        "name": "Ácido kójico",
-        "availability": true
-    },
-    {
-        "name": "Resveratrol",
-        "availability": true
-    },
-    {
-        "name": "Licorice",
-        "availability": true
-    },
-    {
-        "name": "Ácido azelaico",
-        "availability": false
-    }
+  {
+    "name": "Ácido Tranexâmico"
+  },
+  {
+    "name": "Hidroquinona"
+  },
+  {
+    "name": "Ácido glicólico"
+  },
+  {
+    "name": "Niacinamida"
+  },
+  {
+    "name": "Vitamina C"
+  },
+  {
+    "name": "Arbutin"
+  },
+  {
+    "name": "Ácido retinóico"
+  },
+  {
+    "name": "Ácido kójico"
+  },
+  {
+    "name": "Resveratrol"
+  },
+  {
+    "name": "Licorice"
+  },
+  {
+    "name": "Ácido azelaico"
+  },
+  {
+    "name": "Naproxeno"
+  }
 ]

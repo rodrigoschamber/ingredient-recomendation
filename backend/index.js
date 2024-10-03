@@ -1,6 +1,6 @@
+import express from "express";
 import ActiveIngredientBuilder from "./builder/ActiveIngredientBuilder.js";
 import ActiveIngredientDirector from "./builder/ActiveIngredientDirector.js";
-import express from "express";
 
 const builder = new ActiveIngredientBuilder();
 const director = new ActiveIngredientDirector(builder);

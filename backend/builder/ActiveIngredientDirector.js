@@ -1,5 +1,8 @@
-import { getDiseasePrompt, getNamePrompt } from "../prompts/prompts.js";
 import PromptFacade from "../facade/promptFacade.js";
+import JsonRepository from "../repository/JsonRepository.js";
+import { getDiseasePrompt, getNamePrompt } from "../prompts/prompts.js";
+
+const repository = new JsonRepository("./data/stock.json");
 
 class ActiveIngredientDirector {
   constructor(builder) {
@@ -15,7 +18,7 @@ class ActiveIngredientDirector {
         .setName(item?.principio_ativo)
         .setMechanism(item?.mecanismo)
         .setDescription(item?.descricao)
-        .setAvailability(false)
+        .setAvailability(repository.exists(item?.principio_ativo))
         .build();
     });
   }
@@ -23,13 +26,12 @@ class ActiveIngredientDirector {
   async constructByName(name) {
     const api = new PromptFacade(getNamePrompt(name));
     const response = await api.generateContent();
-
     return response?.map((item) => {
       return this.builder
         .setName(item?.principio_ativo)
         .setMechanism(item?.mecanismo)
         .setDescription(item?.descricao)
-        .setAvailability(false)
+        .setAvailability(repository.exists(item?.principio_ativo))
         .build();
     });
   }
