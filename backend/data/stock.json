@@ -38,5 +38,9 @@
     {
         "name": "Licorice",
         "availability": true
+    },
+    {
+        "name": "Ácido azelaico",
+        "availability": false
     }
 ]
