@@ -1,6 +1,7 @@
 import express from "express";
 import ActiveIngredientBuilder from "./builder/ActiveIngredientBuilder.js";
 import ActiveIngredientDirector from "./builder/ActiveIngredientDirector.js";
+import "dotenv/config";
 
 const builder = new ActiveIngredientBuilder();
 const director = new ActiveIngredientDirector(builder);
