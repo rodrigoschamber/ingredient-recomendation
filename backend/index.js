@@ -11,6 +11,10 @@ const port = process.env.PORT || 5002;
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Ingredient Builder API is running.");
+});
+
 app.post("/constructByDisease", async (req, res) => {
   const { disease } = req.body;
   if (!disease) {
