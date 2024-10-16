@@ -12,7 +12,7 @@ const port = process.env.PORT || 5002;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Ingredient Builder API is running.");
+  res.send("Ingredient Builder API is running");
 });
 
 app.post("/constructByDisease", async (req, res) => {
@@ -20,9 +20,14 @@ app.post("/constructByDisease", async (req, res) => {
   if (!disease) {
     return res.status(400).send("Disease is required");
   }
-  director.constructByDisease(disease).then((result) => {
-    res.json(result);
-  });
+  director
+    .constructByDisease(disease)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 });
 
 app.post("/constructByName", async (req, res) => {
@@ -30,9 +35,14 @@ app.post("/constructByName", async (req, res) => {
   if (!name) {
     return res.status(400).send("Active Ingredient is required");
   }
-  director.constructByName(name).then((result) => {
-    res.json(result);
-  });
+  director
+    .constructByName(name)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 });
 
 app.listen(port, () => {
