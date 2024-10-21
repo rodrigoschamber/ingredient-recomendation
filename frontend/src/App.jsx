@@ -28,9 +28,22 @@ export default function App() {
   };
 
   const handleSubmit = async () => {
+    console.log(formData);
     try {
-      const response = await axios.post("YOUR_API_ENDPOINT", formData);
-      console.log("Response:", response.data);
+      if (formData.option === "name") {
+        const response = await axios.post(
+          "https://ingredientbuilder-770206902960.us-central1.run.app/constructByName",
+          { name: formData.search }
+        );
+        console.log("Response:", response.data);
+      }
+      if (formData.option === "disease") {
+        const response = await axios.post(
+          "https://ingredientbuilder-770206902960.us-central1.run.app/constructByDisease",
+          { disease: formData.search }
+        );
+        console.log("Response:", response.data);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
