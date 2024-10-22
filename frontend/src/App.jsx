@@ -113,7 +113,7 @@ export default function App() {
                   {item.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {item.mechanism}
+                  Mecanismo de Ação: {item.mechanism}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Descrição: {item.description}
