@@ -29,7 +29,7 @@ export default function App() {
 
   const handleSubmit = async () => {
     console.log(formData);
-    const url = 'http://localhost:5002';
+    const url = import.meta.env.VITE_INGREDIENT_BUILDER_API_URL || `htt://localhost:5002`;
     try {
       if (formData.option === "name") {
         const response = await axios.post(
