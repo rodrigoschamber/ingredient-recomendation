@@ -33,14 +33,24 @@ export default function App() {
       if (formData.option === "name") {
         const response = await axios.post(
           "https://ingredientbuilder-770206902960.us-central1.run.app/constructByName",
-          { name: formData.search }
+          { name: formData.search },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
         console.log("Response:", response.data);
       }
       if (formData.option === "disease") {
         const response = await axios.post(
           "https://ingredientbuilder-770206902960.us-central1.run.app/constructByDisease",
-          { disease: formData.search }
+          { disease: formData.search },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
         console.log("Response:", response.data);
       }
