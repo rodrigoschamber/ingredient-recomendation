@@ -4,6 +4,8 @@ import axios from "axios";
 import {
   Box,
   Button,
+  Card,
+  CardContent,
   Container,
   Typography,
   TextField,
@@ -18,6 +20,14 @@ export default function App() {
     search: "",
     option: "name",
   });
+  const [responseData, setResponseData] = useState([
+    {
+      name: "",
+      mechanism: "",
+      description: "",
+      availability: false,
+    },
+  ]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +39,8 @@ export default function App() {
 
   const handleSubmit = async () => {
     console.log(formData);
-    const url = import.meta.env.VITE_INGREDIENT_BUILDER_API_URL || `htt://localhost:5002`;
+    const url =
+      import.meta.env.VITE_INGREDIENT_BUILDER_API_URL || `htt://localhost:5002`;
     try {
       if (formData.option === "name") {
         const response = await axios.post(
@@ -41,7 +52,7 @@ export default function App() {
             },
           }
         );
-        console.log("Response:", response.data);
+        setResponseData(response.data);
       }
       if (formData.option === "disease") {
         const response = await axios.post(
@@ -53,7 +64,7 @@ export default function App() {
             },
           }
         );
-        console.log("Response:", response.data);
+        setResponseData(response.data);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -94,6 +105,26 @@ export default function App() {
           </RadioGroup>
         </FormControl>
         <Button onClick={handleSubmit}>Pesquisar</Button>
+        {responseData?.map((item, index) => {
+          return (
+            <Card key={index} sx={{ mt: 4 }}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  {item.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {item.mechanism}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Descrição: {item.description}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Disponivel em estoque: {item.availability ? "Sim" : "Não"}
+                </Typography>
+              </CardContent>
+            </Card>
+          );
+        })}
       </Box>
     </Container>
   );
