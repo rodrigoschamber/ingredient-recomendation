@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import ActiveIngredientBuilder from "./builder/ActiveIngredientBuilder.js";
 import ActiveIngredientDirector from "./builder/ActiveIngredientDirector.js";
 import "dotenv/config";
@@ -7,6 +8,7 @@ const builder = new ActiveIngredientBuilder();
 const director = new ActiveIngredientDirector(builder);
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 5002;
 
 app.use(express.json());
