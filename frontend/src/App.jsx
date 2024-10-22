@@ -29,10 +29,11 @@ export default function App() {
 
   const handleSubmit = async () => {
     console.log(formData);
+    const url = 'http://localhost:5002';
     try {
       if (formData.option === "name") {
         const response = await axios.post(
-          "https://ingredientbuilder-770206902960.us-central1.run.app/constructByName",
+          `${url}/constructByName`,
           { name: formData.search },
           {
             headers: {
@@ -44,7 +45,7 @@ export default function App() {
       }
       if (formData.option === "disease") {
         const response = await axios.post(
-          "https://ingredientbuilder-770206902960.us-central1.run.app/constructByDisease",
+          `${url}/constructByDisease`,
           { disease: formData.search },
           {
             headers: {
