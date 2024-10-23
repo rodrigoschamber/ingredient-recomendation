@@ -13,7 +13,11 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-export default function IngredientSearch({ setProgress, setResponseData }) {
+export default function IngredientSearch({
+  progress,
+  setProgress,
+  setResponseData,
+}) {
   const [formData, setFormData] = useState({
     search: "",
     option: "name",
@@ -79,6 +83,7 @@ export default function IngredientSearch({ setProgress, setResponseData }) {
         Ingredient Builder
       </Typography>
       <TextField
+        disabled={progress}
         label="Pesquisa"
         variant="outlined"
         fullWidth
@@ -88,7 +93,7 @@ export default function IngredientSearch({ setProgress, setResponseData }) {
         onChange={handleChange}
       />
       <Box sx={{ display: "flex" }}>
-        <FormControl component="fieldset" sx={{ mb: 2 }}>
+        <FormControl component="fieldset" disabled={progress} sx={{ mb: 2 }}>
           <RadioGroup
             row
             name="option"
@@ -108,7 +113,12 @@ export default function IngredientSearch({ setProgress, setResponseData }) {
           </RadioGroup>
         </FormControl>
         <Box>
-          <Button onClick={handleSubmit} variant="contained" color="primary">
+          <Button
+            disabled={progress}
+            onClick={handleSubmit}
+            variant="contained"
+            color="primary"
+          >
             Pesquisar
           </Button>
           <Button
@@ -129,6 +139,7 @@ export default function IngredientSearch({ setProgress, setResponseData }) {
 }
 
 IngredientSearch.propTypes = {
+  progress: PropTypes.bool.isRequired,
   setProgress: PropTypes.func.isRequired,
   setResponseData: PropTypes.func.isRequired,
 };

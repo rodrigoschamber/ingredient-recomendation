@@ -13,6 +13,7 @@ export default function App() {
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
         <IngredientSearch
+          progress={progress}
           setProgress={setProgress}
           setResponseData={setResponseData}
         />
