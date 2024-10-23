@@ -1,9 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
+import DescriptionIcon from "@mui/icons-material/Description";
+import MedicationIcon from "@mui/icons-material/Medication";
 
 export default function IngredientCard({ ingredientList }) {
   return (
@@ -21,12 +23,19 @@ export default function IngredientCard({ ingredientList }) {
                 {item.name}
               </Typography>
             </Box>
-            <Typography variant="body2" color="text.secondary">
-              Mecanismo de Ação: {item.mechanism}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Descrição: {item.description}
-            </Typography>
+            <Divider orientation="horizontal" flexItem />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
+              <MedicationIcon fontSize="small" color="disabled" />
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                {item.mechanism}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 2 }}>
+              <DescriptionIcon fontSize="small" color="disabled" />
+              <Typography variant="body2" color="text.secondary">
+                {item.description}
+              </Typography>
+            </Box>
           </CardContent>
         </Card>
       ))}
