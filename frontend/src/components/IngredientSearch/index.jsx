@@ -32,49 +32,34 @@ export default function IngredientSearch({
 
   const handleSubmit = async () => {
     const url =
-      import.meta.env.VITE_INGREDIENT_BUILDER_API_URL || `htt://localhost:5002`;
+      import.meta.env.VITE_INGREDIENT_BUILDER_API_URL ||
+      `http://localhost:5002`;
+
     setProgress(true);
 
-    if (formData.option === "name") {
-      await axios
-        .post(
-          `${url}/constructByName`,
-          { name: formData.search.trim() },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          setResponseData(response.data);
-          setProgress(false);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setProgress(false);
-        });
-    }
-    if (formData.option === "disease") {
-      await axios
-        .post(
-          `${url}/constructByDisease`,
-          { disease: formData.search.trim() },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          setResponseData(response.data);
-          setProgress(false);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setProgress(false);
-        });
-    }
+    const capitalizeFirstLetter = (str) => {
+      if (!str) return str;
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
+    await axios
+      .post(
+        `${url}/constructBy${capitalizeFirstLetter(formData.option)}`,
+        { [formData.option]: formData.search.trim() },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setResponseData(response.data);
+        setProgress(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setProgress(false);
+      });
   };
 
   return (
