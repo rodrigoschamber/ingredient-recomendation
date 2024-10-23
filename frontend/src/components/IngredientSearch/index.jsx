@@ -39,7 +39,7 @@ export default function IngredientSearch({
       await axios
         .post(
           `${url}/constructByName`,
-          { name: formData.search },
+          { name: formData.search.trim() },
           {
             headers: {
               "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export default function IngredientSearch({
       await axios
         .post(
           `${url}/constructByDisease`,
-          { disease: formData.search },
+          { disease: formData.search.trim() },
           {
             headers: {
               "Content-Type": "application/json",
@@ -76,8 +76,7 @@ export default function IngredientSearch({
         });
     }
   };
-  const hasSpecialChars = (str) =>
-    /[^a-zA-Z0-9 ]/.test(str) || str.trim() === "";
+  
   return (
     <>
       <TextField
@@ -113,8 +112,7 @@ export default function IngredientSearch({
         <Box>
           <Button
             disabled={
-              progress ||
-              hasSpecialChars(formData.search)
+              progress
             }
             onClick={handleSubmit}
             variant="contained"
