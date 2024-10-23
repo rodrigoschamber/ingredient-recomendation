@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import {
   Box,
   Button,
-  Typography,
   TextField,
   Radio,
   FormControl,
@@ -79,12 +78,9 @@ export default function IngredientSearch({
   };
   return (
     <>
-      <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-        Ingredient Builder
-      </Typography>
       <TextField
         disabled={progress}
-        label="Pesquisa"
+        label="Pesquisar Princípio Ativo ou Doença"
         variant="outlined"
         fullWidth
         sx={{ mb: 2 }}
