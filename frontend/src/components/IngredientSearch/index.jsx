@@ -74,7 +74,7 @@ export default function IngredientSearch({
         value={formData.search}
         onChange={handleChange}
       />
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <FormControl component="fieldset" disabled={progress}>
           <RadioGroup
             row
