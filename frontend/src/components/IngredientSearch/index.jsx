@@ -76,6 +76,8 @@ export default function IngredientSearch({
         });
     }
   };
+  const hasSpecialChars = (str) =>
+    /[^a-zA-Z0-9 ]/.test(str) || str.trim() === "";
   return (
     <>
       <TextField
@@ -110,7 +112,10 @@ export default function IngredientSearch({
         </FormControl>
         <Box>
           <Button
-            disabled={progress}
+            disabled={
+              progress ||
+              hasSpecialChars(formData.search)
+            }
             onClick={handleSubmit}
             variant="contained"
             color="primary"
