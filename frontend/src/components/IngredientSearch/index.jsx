@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import axios from "axios";
+import PropTypes from "prop-types";
 import {
   Button,
   Typography,
@@ -10,9 +10,9 @@ import {
   FormControlLabel,
   RadioGroup,
 } from "@mui/material";
-import PropTypes from 'prop-types';
+import axios from "axios";
 
-export default function IngredientSearch({ setResponseData }) {
+export default function IngredientSearch({ setProgress, setResponseData }) {
   const [formData, setFormData] = useState({
     search: "",
     option: "name",
@@ -29,9 +29,11 @@ export default function IngredientSearch({ setResponseData }) {
   const handleSubmit = async () => {
     const url =
       import.meta.env.VITE_INGREDIENT_BUILDER_API_URL || `htt://localhost:5002`;
-    try {
-      if (formData.option === "name") {
-        const response = await axios.post(
+    setProgress(true);
+
+    if (formData.option === "name") {
+      await axios
+        .post(
           `${url}/constructByName`,
           { name: formData.search },
           {
@@ -39,11 +41,19 @@ export default function IngredientSearch({ setResponseData }) {
               "Content-Type": "application/json",
             },
           }
-        );
-        setResponseData(response.data);
-      }
-      if (formData.option === "disease") {
-        const response = await axios.post(
+        )
+        .then((response) => {
+          setResponseData(response.data);
+          setProgress(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setProgress(false);
+        });
+    }
+    if (formData.option === "disease") {
+      await axios
+        .post(
           `${url}/constructByDisease`,
           { disease: formData.search },
           {
@@ -51,11 +61,15 @@ export default function IngredientSearch({ setResponseData }) {
               "Content-Type": "application/json",
             },
           }
-        );
-        setResponseData(response.data);
-      }
-    } catch (error) {
-      console.error("Error:", error);
+        )
+        .then((response) => {
+          setResponseData(response.data);
+          setProgress(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setProgress(false);
+        });
     }
   };
   return (
@@ -97,7 +111,6 @@ export default function IngredientSearch({ setResponseData }) {
 }
 
 IngredientSearch.propTypes = {
+  setProgress: PropTypes.func.isRequired,
   setResponseData: PropTypes.func.isRequired,
 };
-
-
