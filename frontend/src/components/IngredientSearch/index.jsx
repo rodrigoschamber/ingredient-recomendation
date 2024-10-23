@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
+  Box,
   Button,
   Typography,
   TextField,
@@ -86,26 +87,43 @@ export default function IngredientSearch({ setProgress, setResponseData }) {
         value={formData.search}
         onChange={handleChange}
       />
-      <FormControl component="fieldset" sx={{ mb: 2 }}>
-        <RadioGroup
-          row
-          name="option"
-          value={formData.option}
-          onChange={handleChange}
-        >
-          <FormControlLabel
-            value="name"
-            control={<Radio />}
-            label="Princípio Ativo"
-          />
-          <FormControlLabel
-            value="disease"
-            control={<Radio />}
-            label="Doença"
-          />
-        </RadioGroup>
-      </FormControl>
-      <Button onClick={handleSubmit}>Pesquisar</Button>
+      <Box sx={{ display: "flex" }}>
+        <FormControl component="fieldset" sx={{ mb: 2 }}>
+          <RadioGroup
+            row
+            name="option"
+            value={formData.option}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="name"
+              control={<Radio />}
+              label="Princípio Ativo"
+            />
+            <FormControlLabel
+              value="disease"
+              control={<Radio />}
+              label="Doença"
+            />
+          </RadioGroup>
+        </FormControl>
+        <Box>
+          <Button onClick={handleSubmit} variant="contained" color="primary">
+            Pesquisar
+          </Button>
+          <Button
+            sx={{ ml: 2 }}
+            onClick={() => {
+              setResponseData([]);
+              setFormData({ search: "", option: "name" });
+            }}
+            variant="outlined"
+            color="secondary"
+          >
+            Limpar
+          </Button>
+        </Box>
+      </Box>
     </>
   );
 }
