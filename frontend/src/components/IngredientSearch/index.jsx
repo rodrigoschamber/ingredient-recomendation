@@ -76,7 +76,7 @@ export default function IngredientSearch({
         });
     }
   };
-  
+
   return (
     <>
       <TextField
@@ -109,11 +109,10 @@ export default function IngredientSearch({
             />
           </RadioGroup>
         </FormControl>
-        <Box>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <Button
-            disabled={
-              progress
-            }
+            disabled={progress}
+            sx={{ maxHeight: "50%" }}
             onClick={handleSubmit}
             variant="contained"
             color="primary"
@@ -121,7 +120,7 @@ export default function IngredientSearch({
             Pesquisar
           </Button>
           <Button
-            sx={{ ml: 2 }}
+            sx={{ ml: 2, maxHeight: "50%" }}
             onClick={() => {
               setResponseData([]);
               setFormData({ search: "", option: "name" });
