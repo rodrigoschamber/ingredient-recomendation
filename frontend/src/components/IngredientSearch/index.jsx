@@ -109,6 +109,7 @@ export default function IngredientSearch({
             Pesquisar
           </Button>
           <Button
+            disabled={progress}
             sx={{ ml: 2 }}
             onClick={() => {
               setResponseData([]);

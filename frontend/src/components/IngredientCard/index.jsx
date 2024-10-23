@@ -10,15 +10,15 @@ import MedicationIcon from "@mui/icons-material/Medication";
 export default function IngredientCard({ ingredientList }) {
   return (
     <>
-      {
+      {ingredientList.length > 0 ? (
         <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
           <Typography variant="body2" color="text.secondary">
             {`Total de ${ingredientList.length} princípios ativos encontrados.`}
           </Typography>
         </Box>
-      }
+      ) : null}
       {ingredientList?.map((item, index) => (
-        <Card key={index} sx={{ mt: 4 }}>
+        <Card key={index} sx={{ mt: 2 }}>
           <CardContent>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               {item.availability ? (
