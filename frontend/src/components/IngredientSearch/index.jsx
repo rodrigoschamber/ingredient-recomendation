@@ -90,7 +90,7 @@ export default function IngredientSearch({
         onChange={handleChange}
       />
       <Box sx={{ display: "flex" }}>
-        <FormControl component="fieldset" disabled={progress} sx={{ mb: 2 }}>
+        <FormControl component="fieldset" disabled={progress}>
           <RadioGroup
             row
             name="option"
@@ -109,10 +109,14 @@ export default function IngredientSearch({
             />
           </RadioGroup>
         </FormControl>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           <Button
             disabled={progress}
-            sx={{ maxHeight: "50%" }}
             onClick={handleSubmit}
             variant="contained"
             color="primary"
@@ -120,7 +124,7 @@ export default function IngredientSearch({
             Pesquisar
           </Button>
           <Button
-            sx={{ ml: 2, maxHeight: "50%" }}
+            sx={{ ml: 2 }}
             onClick={() => {
               setResponseData([]);
               setFormData({ search: "", option: "name" });
