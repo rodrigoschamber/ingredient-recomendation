@@ -31,21 +31,13 @@ export default function IngredientSearch({
   };
 
   const handleSubmit = async () => {
-    const url =
-      // import.meta.env.VITE_INGREDIENT_BUILDER_API_URL ||
-      `http://localhost:5678`;
-
+    const url = `http://localhost:5678`;
+    const webhookUrl = `webhook-test/1abbaa61-bbf2-4eb3-a4ed-9569b2418363`;
     setProgress(true);
-
-    // const capitalizeFirstLetter = (str) => {
-    //   if (!str) return str;
-    //   return str.charAt(0).toUpperCase() + str.slice(1);
-    // };
 
     await axios
       .post(
-        // `${url}/constructBy${capitalizeFirstLetter(formData.option)}`,
-        `${url}/webhook-test/1abbaa61-bbf2-4eb3-a4ed-9569b2418363`,
+        `${url}/${webhookUrl}`,
         { [formData.option]: formData.search.trim() },
         {
           headers: {
