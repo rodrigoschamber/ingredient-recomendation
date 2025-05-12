@@ -59,7 +59,7 @@ export default function IngredientSearch({
     <>
       <TextField
         disabled={progress}
-        label="Pesquisar Princípio Ativo ou Doença"
+        label="Pesquisar Princípio Ativo ou Condição"
         variant="outlined"
         fullWidth
         sx={{ mb: 2 }}
@@ -83,7 +83,7 @@ export default function IngredientSearch({
             <FormControlLabel
               value="disease"
               control={<Radio />}
-              label="Doença"
+              label="Condição"
             />
           </RadioGroup>
         </FormControl>

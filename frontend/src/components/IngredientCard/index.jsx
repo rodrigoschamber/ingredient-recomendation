@@ -2,8 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
+import ScienceIcon from "@mui/icons-material/Science";
 import DescriptionIcon from "@mui/icons-material/Description";
 import MedicationIcon from "@mui/icons-material/Medication";
 
@@ -21,11 +20,7 @@ export default function IngredientCard({ ingredientList }) {
         <Card key={index} sx={{ mt: 2 }}>
           <CardContent>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              {item.availability ? (
-                <CheckCircleIcon color="success" fontSize="medium" />
-              ) : (
-                <CancelIcon color="error" fontSize="medium" />
-              )}
+              <ScienceIcon color="success" fontSize="medium" />
               <Typography variant="h5" component="div">
                 {item.name}
               </Typography>
